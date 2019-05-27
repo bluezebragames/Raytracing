@@ -1,0 +1,18 @@
+make && ./smooth <scene_description_file.txt> <x_res> <y_res> <h>
+
+Ex:
+make && ./smooth data/scene_bunny.txt 800 800 0.02
+
+
+Constructing F = (I - h delta):
+
+From (delta x)_i = 1/2A sum_j (cot(alpha_j) + cot(beta_j)) (x_j - x_i),
+     (delta x)_i = 1/2A [sum_j (cot(alpha_j) + cot(beta_j)) x_j - x_i * sum_j (cot(alpha_j) + cot(beta_j))]
+
+Thus we want the neighbors of x_i to have a matrix element of 1/2A(cot(alpha_j) + cot(beta_j)) and x_i itself to have a matrix element
+of -1/2A * sum_j (cot(alpha_j) + cot(beta_j)).
+
+cot(theta) = cos(theta)/sin(theta) = a . b / ||a x b||, if a and b are the two vectors that form the angle theta.
+
+
+Hitting the spacebar causes the smoothing (with command-line argument h) to be called.
